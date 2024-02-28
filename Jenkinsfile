@@ -9,6 +9,16 @@ metadata:
   labels:
     app: nodejs-app
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - honda-worker-1
+
   containers:
   - name: nodejs-container
     image: node:latest
