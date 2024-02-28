@@ -20,9 +20,10 @@ spec:
     }
 
     stages {
-        stage('Checkout') {
+       stage('Checkout') {
             steps {
-                git 'https://github.com/vinudevops/nodejs.git'
+                // This line will clone the source code repository
+                checkout scm
             }
         }
 
