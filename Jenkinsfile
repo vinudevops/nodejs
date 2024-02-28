@@ -1,5 +1,33 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            // Define the pod template for Node.js
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: nodejs-app
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - honda-worker-1
+
+  containers:
+  - name: nodejs-container
+    image: node:latest
+    command:
+    - cat
+    tty: true
+"""
+        }
+    }
 
     stages {
        stage('MILSテスト実行') {
