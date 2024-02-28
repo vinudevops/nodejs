@@ -1,5 +1,23 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            // Define the pod template for Node.js
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: nodejs-app
+spec:
+  containers:
+  - name: nodejs-container
+    image: node:latest
+    command:
+    - cat
+    tty: true
+"""
+        }
+    }
 
     stages {
         stage('Checkout') {
