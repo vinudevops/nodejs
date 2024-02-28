@@ -28,6 +28,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                echo 'Pipeline succeeded!'
                 // Placeholder for deployment steps
             }
         }
