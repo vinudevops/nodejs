@@ -64,7 +64,7 @@ spec:
             }
         }
 
-     stage('ReportGeneration') {
+     stage('レポートが生成されました') {
             steps {
                 echo 'ReportGeneration'
                 // Placeholder for deployment steps
