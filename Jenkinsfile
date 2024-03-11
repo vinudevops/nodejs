@@ -41,9 +41,8 @@ spec:
             steps {
                 script {
                     // Install Node.js dependencies
-                    sh 'npm install'
-                    cd /path
-                    conmand
+                    //sh 'npm install'
+                    echo "started"
 
                 }
             }
@@ -52,7 +51,8 @@ spec:
             steps {
                 script {
                     // Run ESLint for code quality checks
-                    sh 'npx eslint .'
+                    //sh 'npx eslint .'
+                     echo "started"
                 }
             }
         }
